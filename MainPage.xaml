@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhotoGallery.MainPage">
+
+    <Grid>
+        <CollectionView x:Name="ContactsList" Margin="10" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeThickness="1" Background="LightGray" Margin="5" Padding="10">
+                        <Grid ColumnDefinitions="Auto, 60, *" ColumnSpacing="15">
+                            <CheckBox Grid.Column="0"
+                                      IsChecked="{Binding IsSelected}"
+                                      CheckedChanged="OnCheckBoxChanged" />
+                            <Border Grid.Column="1" HeightRequest="60" WidthRequest="60">
+                                <Image Source="{Binding Photo}" Aspect="AspectFill"/>
+                            </Border>
+                            <StackLayout Grid.Column="2" VerticalOptions="Center">
+                                <Label Text="{Binding FullName}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Phone}" />
+                            </StackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
